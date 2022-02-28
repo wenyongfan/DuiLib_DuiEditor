@@ -475,7 +475,13 @@ bool CGridCellUI::OnNotifyInnerControl(void* param)
 			if(GetManager()) GetManager()->SendNotify(pGrid, DUI_MSGTYPE_ENDEDIT, m_row, m_col);
 		}
 	}
-
+	else if (cellType == celltypeEdit)
+	{
+		if (pNotify->sType == DUI_MSGTYPE_RETURN)
+		{
+			OnCellKillFocus();
+		}
+	}
 	return true;
 }
 
