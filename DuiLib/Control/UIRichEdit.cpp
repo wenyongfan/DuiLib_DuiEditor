@@ -746,6 +746,22 @@ namespace DuiLib {
 			if (!IsEnabled()) {
 				m_pTwh->SetColor(m_pManager->GetDefaultDisabledColor());
 			}
+
+			auto style = GetTextStyle();
+
+			if ((style & DT_CENTER) == 1)
+			{
+				m_pTwh->SetDefaultAlign(PFA_CENTER);
+			}
+			else if ((style & DT_RIGHT) == 2)
+			{
+				m_pTwh->SetDefaultAlign(PFA_RIGHT);
+			}
+			else
+			{
+				m_pTwh->SetDefaultAlign(PFA_LEFT);
+			}
+			
 		}
 
 		m_bInited= true;
@@ -1490,7 +1506,7 @@ namespace DuiLib {
 				m_uTipValueAlign = DT_SINGLELINE | DT_RIGHT;
 			}
 		}
-		else CContainerUI::SetAttribute(pstrName, pstrValue);
+		else CContainerUI::SetAttribute(pstrName, pstrValue);		
 	}
 
 	LRESULT CRichEditUI::MessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, bool& bHandled)
